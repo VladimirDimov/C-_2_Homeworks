@@ -2,7 +2,8 @@
 //  ===================================
 //  Extend the previous program to support also subtraction and multiplication of polynomials.
 //  ==========================================================================================
-
+//  2x2 - 8x + 20
+//  -3x2 + 10x - 30
 using System;
 using System.Collections;
 using System.Collections.Generic;
