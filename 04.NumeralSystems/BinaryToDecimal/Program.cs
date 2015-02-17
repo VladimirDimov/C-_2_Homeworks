@@ -4,28 +4,29 @@
 //  ==========================================================================
 
 using System;
+using System.Numerics;
 
 class BinaryToDecimal
 {
     static void Main()
     {
-        int binaryInput;
-        int decimalOutput;
-        Console.Write("Enter the binary representation of an integer: ");
-        binaryInput = int.Parse(Console.ReadLine());
+        BigInteger binaryInput;
+        BigInteger decimalOutput;
+        Console.Write("Enter the binary representation of an BigIntegereger: ");
+        binaryInput = BigInteger.Parse(Console.ReadLine());
         decimalOutput = DoBinaryToDecimal(binaryInput);
         Console.WriteLine("Decimal representation: {0}", decimalOutput);
     }
 
-    static int DoBinaryToDecimal(int binaryInput)
+    static BigInteger DoBinaryToDecimal(BigInteger binaryInput)
     {
-        int decimalOutput = 0;
-        int currentBinaryDigit;
-        int power = 0;
+        BigInteger decimalOutput = 0;
+        BigInteger currentBinaryDigit;
+        ulong power = 0;
         while (binaryInput != 0)
         {
             currentBinaryDigit = binaryInput % 10;
-            decimalOutput += currentBinaryDigit * (int)Math.Pow(2, power);
+            decimalOutput += currentBinaryDigit * (BigInteger)Math.Pow(2, power);
             power++;
             binaryInput /= 10;
         }
