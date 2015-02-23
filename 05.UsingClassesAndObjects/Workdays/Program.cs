@@ -15,29 +15,11 @@ class Workdays
 {
     static void Main()
     {
-        DateTime today = new DateTime();
-        DateTime futureDate = new DateTime();
-        DateTime curDate = new DateTime();
-        int workdays = 0;
-        int[] restdays = { 0, 6 };
-
-        Thread.CurrentThread.CurrentCulture = new CultureInfo("bg-BG");
-        Console.WriteLine("Inser srarting date:");
-        today = DateTime.Parse(Console.ReadLine());
+        Console.WriteLine("Today is {0:dd.MM.yyyy}:", DateTime.Today);
         Console.WriteLine("Inser ending date:");
-        futureDate = DateTime.Parse(Console.ReadLine());
+        DateTime futureDate = DateTime.ParseExact(Console.ReadLine(), "dd.MM.yyyy", null);
+        Console.WriteLine("From today to {0:dd.MM.yyyy} there are {1} working days.", futureDate, CalculateWorkdays(futureDate));    
 
-        curDate = today;
-        while (curDate != futureDate.AddDays(1))
-        {
-            if (!restdays.Contains((int)curDate.DayOfWeek) && !isHoliday(curDate))
-            {
-                workdays++;
-            }
-            curDate = curDate.AddDays(1);
-        }
-        Console.WriteLine("From {0} to {1} there are {2} working days.", today.ToShortDateString(), futureDate.ToShortDateString(), workdays);
-        Console.ReadLine();
     }
 
     static bool isHoliday(DateTime date)
@@ -59,5 +41,27 @@ class Workdays
             }
         }
         return false;
+    }
+
+    static int CalculateWorkdays(DateTime futureDate)
+    {
+        DateTime today = new DateTime();
+        DateTime curDate = new DateTime();
+        int workdays = 0;
+        int[] restdays = { 0, 6 };
+
+        Thread.CurrentThread.CurrentCulture = new CultureInfo("bg-BG");
+        today = DateTime.Today;
+
+        curDate = today;
+        while (curDate != futureDate.AddDays(1))
+        {
+            if (!restdays.Contains((int)curDate.DayOfWeek) && !isHoliday(curDate))
+            {
+                workdays++;
+            }
+            curDate = curDate.AddDays(1);
+        }
+        return workdays;
     }
 }

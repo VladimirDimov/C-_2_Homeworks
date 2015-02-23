@@ -37,7 +37,6 @@ class Workdays
             curDate = curDate.AddDays(1);
         }
         Console.WriteLine("From {0} to {1} there are {2} working days.", today.ToShortDateString(), futureDate.ToShortDateString(), workdays);
-        Console.ReadLine();
     }
 
     static bool isHoliday(DateTime date)

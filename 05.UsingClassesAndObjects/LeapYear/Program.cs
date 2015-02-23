@@ -10,11 +10,12 @@ using System;
     {
         static void Main()
         {
+            Console.WriteLine("Enter any year in format [yyyy]:");
             int year = int.Parse(Console.ReadLine());
             DateTime date = new DateTime(year, 2, 28);
 
             if (date.AddDays(1).Month == 2)
-            {
+            {               
                 Console.WriteLine("It is a leap year!");
             }
             else
