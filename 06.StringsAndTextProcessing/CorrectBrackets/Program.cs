@@ -36,6 +36,6 @@ class CorrectBrackets
         {
             isRight = false;
         }
-        Console.WriteLine(isRight ? "The brackets in the expression are corrrect!" : "The brackets in the expression are incorrect!");
+        Console.WriteLine(isRight ? "The brackets in the expression are correct!" : "The brackets in the expression are incorrect!");
     }
 }

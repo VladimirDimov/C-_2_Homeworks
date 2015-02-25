@@ -6,6 +6,6 @@ class StringInC
 {
     static void Main()
     {
-       
+        
     }
 }

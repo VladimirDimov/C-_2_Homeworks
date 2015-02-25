@@ -19,13 +19,13 @@ class DateDifference
 {
     static void Main()
     {
-        Thread.CurrentThread.CurrentCulture = new CultureInfo("bg-BG");
+        CultureInfo provider = CultureInfo.InvariantCulture;
 
         Console.WriteLine("Enter start date:");
-        DateTime startDate = DateTime.Parse(Console.ReadLine());
+        DateTime startDate = DateTime.ParseExact(Console.ReadLine(), "d.MM.yyyy", provider);
 
         Console.WriteLine("Enter end date:");
-        DateTime endDate = DateTime.Parse(Console.ReadLine());
+        DateTime endDate = DateTime.ParseExact(Console.ReadLine(), "d.MM.yyyy", provider);
 
         int difference = (int)(endDate - startDate).TotalDays;
 

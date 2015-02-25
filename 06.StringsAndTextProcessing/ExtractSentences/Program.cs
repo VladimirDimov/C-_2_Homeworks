@@ -32,7 +32,7 @@ class ExtractSentences
         foreach (var symbol in text)
         {
             tempString.Append(symbol);
-            if (symbol == '.')
+            if (symbol == '.' || symbol == '?' || symbol == '!')
             {
                     if (isContaining(tempString.ToString(), requestedWord))
                     {

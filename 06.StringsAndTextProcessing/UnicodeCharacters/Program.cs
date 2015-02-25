@@ -7,7 +7,7 @@
     Example:
     
     input	output
-    Hi!	\u0048\u0069\u0021
+    Hi!	    \u0048\u0069\u0021
 */
 using System;
 using System.Text;

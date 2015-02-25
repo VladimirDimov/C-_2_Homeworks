@@ -5,8 +5,8 @@ Write a program that reverses the words in given sentence.
 ==========================================================
 Example:
 
-input	output
-C# is not C++, not PHP and not Delphi!	Delphi not and PHP, not C++ not is C#!
+input	                                        output
+C# is not C++, not PHP and not Delphi!	        Delphi not and PHP, not C++ not is C#!
 */
 
 using System;

@@ -15,6 +15,7 @@ implemented as a dynamic language in ***.
 
 using System;
 using System.Text;
+using System.Text.RegularExpressions;
 
 class ForbiddenWords
 {
@@ -28,56 +29,9 @@ class ForbiddenWords
 
         foreach (var word in forbidenWords)
         {
-            inputTex = HideForbidenWord(inputTex, word);
+            string pattern = @"\b" + word + @"\b";
+            inputTex = Regex.Replace(inputTex, pattern, new string('*', word.Length));
         }
-
         Console.WriteLine(inputTex);
-    }
-
-    static string HideForbidenWord(string inputText, string forbidenWord)
-    {
-        StringBuilder text = new StringBuilder();
-        text.Append(inputText);
-        int index = 0;
-        while (index >= 0)
-        {
-            index = text.ToString().IndexOf(forbidenWord, index);
-            if (index < 0)
-            {
-                return text.ToString();
-            }
-            if (index == 0)
-            {
-                if (!char.IsLetter(text[index + forbidenWord.Length]))
-                {
-                    for (int i = index; i < index + forbidenWord.Length; i++)
-                    {
-                        text[i] = '*';
-                    }
-                }
-            }
-            else if (0<index && index < text.Length - forbidenWord.Length+1)
-            {
-                if (!char.IsLetter(text[index - 1]) && !char.IsLetter(text[index + forbidenWord.Length]))
-                {
-                    for (int i = index; i < index + forbidenWord.Length; i++)
-                    {
-                        text[i] = '*';
-                    }
-                }
-            }
-            else if (index == text.Length - forbidenWord.Length+1)
-            {
-                if (!char.IsLetter(text[index-1]))
-                {
-                    for (int i = index; i < index + forbidenWord.Length; i++)
-                    {
-                        text[i] = '*';
-                    }
-                }
-            }
-            index += forbidenWord.Length;
-        }
-        return text.ToString();
-    }
+    }    
 }
