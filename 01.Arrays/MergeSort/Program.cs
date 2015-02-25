@@ -1,88 +1,82 @@
-﻿//  Write a program that sorts an array of integers using the Merge sort algorithm.
+﻿
+//Problem 13.* Merge sort
+
+//    Write a program that sorts an array of integers using the Merge sort algorithm.
+
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 class MergeSort
 {
     static void Main()
     {
-        int[] myArray;
-        char[] separators = {',', ' '};
-                
-        Console.WriteLine("Enter a sequence of numbers, separated by commas:");
-        //myArray = Console.ReadLine().Split(new char[] { ',', ' ', }, StringSplitOptions.RemoveEmptyEntries).Select(x => int.Parse(x)).ToArray();
-        myArray = Console.ReadLine().Split(separators, StringSplitOptions.RemoveEmptyEntries).Select(x => int.Parse(x)).ToArray();
-        
-        SelectSubArrays(myArray, 0, myArray.Length - 1);
-        Console.WriteLine("Applying selection sort:");
-        Console.WriteLine(string.Join(", ", myArray));
-        Console.ReadLine();
-    }
+        int[] array = { 3, 8, 7, 5, 2, 1, 9, 6, 4 };
+        Console.WriteLine("MergeSort By Recursive Method");
 
-    static void SelectSubArrays(int[] array, int left, int right)
-    {
-        int middle = (left + right) / 2;
+        Sort(array, 0, array.Length - 1);
 
-        if (right - left <=1)
+        for (int i = 0; i < array.Length; i++)
         {
-            SortSubArrays(array, left, right);
-            return;
-        }
-
-        SelectSubArrays(array, left, middle);
-        SelectSubArrays(array, middle + 1, right);
-    }
-
-    static void SortSubArrays(int[] array, int left, int right)
-    {
-        int temp;
-        if (left == right)
-        {
-            return;
-        }
-        else
-        {
-            if (left>right)
+            Console.Write(array[i]);
+            if(i == array.Length - 1)
             {
-                temp = array[left];
-                array[left] = array[right];
-                array[right] = temp;
-            }
-        }  
-    }
-
-    static void MergeSubArrays(int[] array, int left, int right, int middle)
-    {
-        int[] tempArray = new int[right - left + 1];
-        int curposition = 0;
-        int leftPosition = 0;
-        int rightPosition = 0;
-
-        while (curposition != tempArray.Length-1)
-        {
-            if (array[left+leftPosition] <= array[middle+1+rightPosition])
-            {
-                tempArray[curposition] = array[left + leftPosition];
-                if (leftPosition <middle)
-                {
-                    leftPosition++;
-                }
+                Console.WriteLine();
             }
             else
             {
-                tempArray[curposition] = array[middle + 1 + rightPosition];
-                if (rightPosition < right)
-                {
-                    rightPosition++;
-                }
+                Console.Write(", ");
             }
-            curposition++;
         }
-        for (int i = 0; i < tempArray.Length; i++)
+    }
+
+    public static void Sort(int[] array, int left, int right)
+    {
+        int mid;
+
+        if (right > left)
         {
-            array[left + i] = tempArray[i];
+            mid = (right + left) / 2;
+            Sort(array, left, mid);
+            Sort(array, (mid + 1), right);
+            DoMerge(array, left, (mid + 1), right);
+        }
+    }
+
+    private static void DoMerge(int[] array, int left, int mid, int right)
+    {
+        int[] temp = new int[25];
+        int i, left_end, num_elements, tmp_pos;
+        left_end = (mid - 1);
+        tmp_pos = left;
+        num_elements = (right - left + 1);
+
+        while ((left <= left_end) && (mid <= right))
+        {
+            if (array[left] <= array[mid])
+            {
+                temp[tmp_pos++] = array[left++];
+            }
+            else
+            {
+                temp[tmp_pos++] = array[mid++];
+            }
+        }
+
+        while (left <= left_end)
+        {
+            temp[tmp_pos++] = array[left++];
+        }
+
+        while (mid <= right)
+        {
+            temp[tmp_pos++] = array[mid++];
+        }
+
+        for (i = 0; i < num_elements; i++)
+        {
+            array[right] = temp[right];
+            right--;
         }
     }
 }
+
