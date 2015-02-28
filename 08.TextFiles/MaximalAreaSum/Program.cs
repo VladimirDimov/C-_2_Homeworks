@@ -31,8 +31,9 @@ class MaximalAreaSum
         int currentSum = 0;
         int maxSum = 0;
 
-        Console.WriteLine("Enter file path:");
-        StreamReader reader = new StreamReader(Console.ReadLine());
+        //Console.WriteLine("Enter file path:");
+        //StreamReader reader = new StreamReader(Console.ReadLine());
+        StreamReader reader = new StreamReader("matrix.txt");
         size = int.Parse(reader.ReadLine());
         curLine = new int[size];
         matrix = new int[size, size];

@@ -18,26 +18,39 @@ class AddNumbers
         int lineCounter = 0;
         string readCurLine = null;
 
-        Console.WriteLine("Enter a valid text file path:");
-        string inputFilePath = Console.ReadLine();
-        if (!File.Exists(inputFilePath))
-        {
-            throw new FileNotFoundException();
-        }
-        StreamReader reader = new StreamReader(inputFilePath);
+        //Console.WriteLine("Enter a valid text file path:");
+        //string inputFilePath = Console.ReadLine();
+        string inputFilePath = "addNumbers.txt";
 
-        Console.WriteLine("Enter output file path:");
-        StreamWriter writer = new StreamWriter(Console.ReadLine(), false);
-        while ((readCurLine = reader.ReadLine()) != null)
+        try
         {
-            lineCounter++;
-            currentLineText.Append(lineCounter);
-            currentLineText.Append(" - ");
-            currentLineText.Append(readCurLine);
-            writer.WriteLine(currentLineText.ToString());
-            currentLineText.Clear();
+            if (!File.Exists(inputFilePath))
+            {
+                throw new FileNotFoundException();
+            }
+            StreamReader reader = new StreamReader(inputFilePath);
+
+            //Console.WriteLine("Enter output file path:");
+            //StreamWriter writer = new StreamWriter(Console.ReadLine(), false);
+            StreamWriter writer = new StreamWriter("output.txt");
+            while ((readCurLine = reader.ReadLine()) != null)
+            {
+                lineCounter++;
+                currentLineText.Append(lineCounter);
+                currentLineText.Append(" - ");
+                currentLineText.Append(readCurLine);
+                writer.WriteLine(currentLineText.ToString());
+                currentLineText.Clear();
+            }
+            reader.Close();
+            writer.Close();
+            Console.WriteLine("The output file is {0}", System.IO.Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory) + @"output.txt");
         }
-        reader.Close();
-        writer.Close();
+        catch (FileNotFoundException)
+        {
+            
+            throw;
+        }
+
     }
 }

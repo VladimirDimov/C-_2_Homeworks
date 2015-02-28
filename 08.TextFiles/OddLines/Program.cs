@@ -18,14 +18,12 @@ class OddLines
         Console.WriteLine("Enter the file path:");
         try
         {
-            StreamReader fileReader = new StreamReader(Console.ReadLine());
+            //StreamReader fileReader = new StreamReader(Console.ReadLine());
+            StreamReader fileReader = new StreamReader(@"Oddlines.txt");
 
             using (fileReader)
             {
-                lineNumber++;
-                currentLine = fileReader.ReadLine();
-                Console.WriteLine(currentLine);
-                while (currentLine != null)
+                do
                 {
                     lineNumber++;
                     currentLine = fileReader.ReadLine();
@@ -33,7 +31,7 @@ class OddLines
                     {
                         Console.WriteLine(currentLine);
                     }
-                }
+                } while (currentLine != null);
             }
         }
         catch (FileNotFoundException ex)

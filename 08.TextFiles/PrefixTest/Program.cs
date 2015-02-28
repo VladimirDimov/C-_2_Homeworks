@@ -18,8 +18,10 @@ class PrefixTest
         string pattern = @"\btest\w+\b";
         string text;
 
-        Console.WriteLine("Enter file path:");
-        filePath = Console.ReadLine();
+        //Console.WriteLine("Enter file path:");
+        //filePath = Console.ReadLine();
+        filePath = "file.txt";
+
         StreamReader reader = new StreamReader(filePath);
         text = reader.ReadToEnd();
         reader.Close();

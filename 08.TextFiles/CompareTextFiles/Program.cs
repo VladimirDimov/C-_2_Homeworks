@@ -20,11 +20,13 @@ class CompareTextFiles
         int samLinesCounter = 0;
         int differentLinesCounter = 0;
 
-        Console.WriteLine("Enter first file path:");
-        StreamReader firstFileReader = new StreamReader(Console.ReadLine());
+        //Console.WriteLine("Enter first file path:");
+        //StreamReader firstFileReader = new StreamReader(Console.ReadLine());
+        StreamReader firstFileReader = new StreamReader("firstFile.txt");
 
-        Console.WriteLine("Enter second file path:");
-        StreamReader secondFileReader = new StreamReader(Console.ReadLine());
+        //Console.WriteLine("Enter second file path:");
+        //StreamReader secondFileReader = new StreamReader(Console.ReadLine());
+        StreamReader secondFileReader = new StreamReader("secondFile.txt");
 
         while ((firstFileLine = firstFileReader.ReadLine()) != null && (secondFileLine = secondFileReader .ReadLine()) != null)
         {

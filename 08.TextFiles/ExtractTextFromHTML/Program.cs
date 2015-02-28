@@ -17,13 +17,13 @@ class ExtractTextFromHTML
 {
     static void Main()
     {
-        string filePath;
         string text;
         bool isInsideTag = false;
         StringBuilder textWOTags = new StringBuilder();
 
-        Console.WriteLine("Enter file path:");
-        filePath = Console.ReadLine();
+        //Console.WriteLine("Enter input file path:");
+        //string filePath = Console.ReadLine();
+        string filePath = "file.txt";
 
         StreamReader reader = new StreamReader(filePath);
         text = reader.ReadToEnd();
@@ -48,8 +48,7 @@ class ExtractTextFromHTML
             }
         }
 
-        StreamWriter writer = new StreamWriter(filePath, false);
-        writer.Write(textWOTags.ToString());
-        writer.Close();
+        Console.WriteLine("Text without tags:");
+        Console.WriteLine(textWOTags);
     }
 }

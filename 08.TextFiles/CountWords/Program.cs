@@ -12,6 +12,8 @@ Handle all possible exceptions in your methods.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 
 class CountWords
 {
@@ -19,8 +21,7 @@ class CountWords
     {
         string filesDirectory;
         List<string> words = new List<string>();
-        List<string> test = new List<string>();
-        Dictionary<string, int> result = new Dictionary<string, int>();
+        StringBuilder builder = new StringBuilder();
         StreamReader reader;
         StreamWriter writer;
 
@@ -52,33 +53,19 @@ class CountWords
                 throw new FileNotFoundException("File not found!");
             }
             reader = new StreamReader(filesDirectory + @"\test.txt");
-            while ((currentWord = reader.ReadLine()) != null)
-            {
-                test.Add(currentWord);
-            }
+            builder.Append(reader.ReadToEnd());
             reader.Dispose();
-
-            //Count words
-            foreach (var word in test)
-            {
-                if (words.Contains(word))
-                {
-                    if (result.ContainsKey(word))
-                    {
-                        result[word]++;
-                    }
-                    else
-                    {
-                        result.Add(word, 1);
-                    }
-                }
-            }
 
             //Write result to output file;
             writer = new StreamWriter(filesDirectory + @"\result.txt", false);
-            foreach (var word in result.Keys)
+
+
+            //Count words
+            foreach (var word in words)
             {
-                writer.WriteLine("Word {0} contains {1} times.", word, result[word]);
+                string pattern = @"\b" + word + @"\b";
+                int counter = Regex.Matches(builder.ToString(), pattern).Count;
+                writer.WriteLine("Word {0} contains {1} times.", word, counter);
             }
             writer.Dispose();
         }

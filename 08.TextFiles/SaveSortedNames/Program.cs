@@ -24,11 +24,13 @@ class SaveSortedNames
         List<string> names = new List<string>();
         string currentName = null;
 
-        Console.WriteLine("Enter input File:");
-        StreamReader reader = new StreamReader(Console.ReadLine());
+        //Console.WriteLine("Enter input File:");
+        //StreamReader reader = new StreamReader(Console.ReadLine());
+        StreamReader reader = new StreamReader("unsorted.txt");
 
-        Console.WriteLine("Enter output File:");
-        StreamWriter writer = new StreamWriter(Console.ReadLine());
+        //Console.WriteLine("Enter output File:");
+        //StreamWriter writer = new StreamWriter(Console.ReadLine());
+        StreamWriter writer = new StreamWriter("sorted.txt");
 
         while ((currentName = reader.ReadLine()) != null)
         {
@@ -43,5 +45,7 @@ class SaveSortedNames
 
         reader.Close();
         writer.Close();
+        Console.WriteLine("The sorted file path is:");
+        Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "sorted.txt");
     }
 }
