@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.EnterNumbers", "EnterNum
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.ReadFileContents", "ReadFileContents\03.ReadFileContents.csproj", "{D2AD3D4B-5ED5-44B6-92E0-F790F5483C82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownloadFile", "DownloadFile\DownloadFile.csproj", "{DD244EE8-01F8-437F-9BF2-EBB8D6CA0D41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.DownloadFile", "DownloadFile\04.DownloadFile.csproj", "{DD244EE8-01F8-437F-9BF2-EBB8D6CA0D41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

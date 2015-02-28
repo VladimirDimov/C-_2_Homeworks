@@ -19,11 +19,11 @@ class SquareRoot
         try
         {
             double number = double.Parse(Console.ReadLine());
-            if (number < 0)
-            {
-                throw new FormatException("Number must be positive!");
-            }
-            Console.WriteLine(Math.Sqrt(number));
+           if (number < 0)
+           {
+               throw new FormatException();
+           }
+           Console.WriteLine(Math.Sqrt(number));
         }
         catch (FormatException fe)
         {

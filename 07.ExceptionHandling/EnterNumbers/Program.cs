@@ -14,22 +14,27 @@ class EnterNumbers
 {
     static void Main()
     {
-        int currentNumber;
-        int currentMinValue = 1;
-        List<int> numbers = new List<int>();
+        ReadNumber(1, 100);
         
-        Console.WriteLine("Enter ten numbers such that a1, a2, … a10, such that 1 < a1 < … < a10 < 100");
+    }
+
+    static void ReadNumber(int start, int end)
+    {
+        int currentNumber;       
+        List<int> numbers = new List<int>();
+
+        Console.WriteLine("Enter ten numbers, such that {0} <= a1 < … < a10 <= {1}", start, end);
         while (numbers.Count < 10)
         {
             try
             {
                 currentNumber = int.Parse(Console.ReadLine());
-                if (currentMinValue > currentNumber || currentNumber > 100)
+                if (start > currentNumber || currentNumber > end)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
                 numbers.Add(currentNumber);
-                currentMinValue = currentNumber + 1;
+                start = currentNumber + 1;
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -41,7 +46,11 @@ class EnterNumbers
                 Console.WriteLine("Invalid number!");
                 Console.WriteLine(fe.Message);
             }
+            catch
+            {
+                Console.WriteLine("Fatal exception");
+            }
         }
-        Console.WriteLine(string.Join(", ", numbers));
+        Console.WriteLine(string.Join(" < ", numbers));
     }
 }

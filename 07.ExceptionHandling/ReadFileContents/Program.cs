@@ -23,7 +23,6 @@ using System.IO;
                 Console.WriteLine("File Content:");
                 Console.WriteLine(reader.ReadToEnd());
                 reader.Close();
-
             }
             catch (FileNotFoundException ex)
             {
@@ -41,5 +40,10 @@ using System.IO;
             {
                 Console.WriteLine(ex.Message);
             }
+            catch
+            {
+                Console.WriteLine("Unknown exception");
+            }
+
         }
     }
